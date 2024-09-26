@@ -139,6 +139,7 @@
             border-radius: 10px;
             z-index: 1000;
             display: none;
+            animation: fadeIn 1s ease forwards;
         }
 
         .warning {
@@ -169,54 +170,12 @@
             color: #ff7e5f;
             animation: fadeInDarkTech 2s ease forwards;
         }
-
-        /* New styles for the DON button */
-        .don-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 12px 24px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .don-btn:hover {
-            background-color: #45a049;
-            transform: scale(1.05);
-        }
-
-        #donation-message {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            z-index: 1001;
-            display: none;
-        }
-
-        .email-text {
-            font-size: 18px;
-            margin-top: 10px;
-        }
     </style>
 </head>
 <body>
     <div class="logo">
         <img src="https://i.imgur.com/qdzPVga.png" alt="Logo" width="100">
     </div>
-
-    <button class="don-btn" onclick="handleDonation()">DON</button>
 
     <div class="content">
         <div class="welcome-text">
@@ -226,7 +185,7 @@
         </div>
 
         <div class="btn-container">
-            <button class="btn" id="whatsapp-btn" onclick="toggleSubButtons('drk-st-bug'); hideButton(this);">DRK-ST-BUG</button>
+            <button class="btn" onclick="toggleSubButtons('drk-st-bug')">DRK-ST-BUG</button>
             <div id="drk-st-bug-sub" class="sub-buttons">
                 <p class="warning">⚠️ Ultra-dangerous WhatsApp bot. Use with caution, may cause significant damage!</p>
                 <h3>Get Your Session</h3>
@@ -255,21 +214,14 @@
         <p>&copy; 2024 DARK TECH. All rights reserved. Owner: 𝙎-𝙏𝞢𝞜</p>
         <p>YouTube: <a href="https://www.youtube.com/@DRK-TECH" target="_blank">@DRK-TECH</a> | 
            Email: <a href="mailto:sandrk766@gmail.com">sandrk766@gmail.com</a> | 
-           WhatsApp: <a id="whatsapp-link" href="https://whatsapp.com/channel/0029Vakp0UnICVfe3I2Fe72w" target="_blank" onclick="hideButton(this);">Channel</a></p>
+           WhatsApp: <a href="https://whatsapp.com/channel/0029Vakp0UnICVfe3I2Fe72w" target="_blank">Channel</a></p>
     </div>
 
     <div id="popup">
         <h3>Join our WhatsApp channel!</h3>
         <p>Stay updated with the latest news and get support.</p>
-        <button class="sub-btn" onclick="openLink('https://whatsapp.com/channel/0029Vakp0UnICVfe3I2Fe72w'); hideButton(this);">Join the channel</button>
+        <button class="sub-btn" onclick="openLink('https://whatsapp.com/channel/0029Vakp0UnICVfe3I2Fe72w')">Join the channel</button>
     </div>
-
-    <div id="donation-message">
-        <h3>Thank you for your support!</h3>
-        <p class="email-text">Please send your donation to: <strong>ralcius53@gmail.com</strong></p>
-    </div>
-
-    <audio id="donationAudio" src="https://imgur.com/foRZQaI" preload="auto"></audio>
 
     <script>
         function toggleSubButtons(id) {
@@ -287,10 +239,6 @@
             window.open(url, '_blank');
         }
 
-        function hideButton(button) {
-            button.style.display = 'none';
-        }
-
         setTimeout(function() {
             document.getElementById('welcome-text').style.animation = 'fadeOut 2s ease forwards';
             setTimeout(function() {
@@ -300,21 +248,14 @@
         }, 3000);
 
         setTimeout(function() {
-            document.getElementById('popup').style.display = 'block';
-        }, 10000);
+            var popup = document.getElementById('popup');
+            popup.style.display = 'block';
 
-        function handleDonation() {
-            var audio = document.getElementById('donationAudio');
-            audio.play();
-
-            var donationMessage = document.getElementById('donation-message');
-            donationMessage.style.display = 'block';
-
-            // Hide the donation message after 5 seconds
+            // Ajouter le code pour masquer la notification après 3 secondes
             setTimeout(function() {
-                donationMessage.style.display = 'none';
-            }, 5000);
-        }
+                popup.style.display = 'none';
+            }, 3000);
+        }, 10000); // Afficher la notification après 10 secondes
     </script>
 </body>
 </html>
