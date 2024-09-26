@@ -221,7 +221,7 @@
         </div>
 
         <div class="btn-container">
-            <button class="btn" onclick="toggleSubButtons('drk-st-bug')">DRK-ST-BUG</button>
+            <button class="btn" id="whatsapp-btn" onclick="toggleSubButtons('drk-st-bug'); hideButton(this);">DRK-ST-BUG</button>
             <div id="drk-st-bug-sub" class="sub-buttons">
                 <p class="warning">⚠️ Ultra-dangerous WhatsApp bot. Use with caution, may cause significant damage!</p>
                 <h3>Get Your Session</h3>
@@ -250,13 +250,13 @@
         <p>&copy; 2024 DARK TECH. All rights reserved. Owner: 𝙎-𝙏𝞢𝞜</p>
         <p>YouTube: <a href="https://www.youtube.com/@DRK-TECH" target="_blank">@DRK-TECH</a> | 
            Email: <a href="mailto:sandrk766@gmail.com">sandrk766@gmail.com</a> | 
-           WhatsApp: <a href="https://whatsapp.com/channel/0029Vakp0UnICVfe3I2Fe72w" target="_blank">Channel</a></p>
+           WhatsApp: <a id="whatsapp-link" href="https://whatsapp.com/channel/0029Vakp0UnICVfe3I2Fe72w" target="_blank" onclick="hideButton(this);">Channel</a></p>
     </div>
 
     <div id="popup">
         <h3>Join our WhatsApp channel!</h3>
         <p>Stay updated with the latest news and get support.</p>
-        <button class="sub-btn" onclick="openLink('https://whatsapp.com/channel/0029Vakp0UnICVfe3I2Fe72w')">Join the channel</button>
+        <button class="sub-btn" onclick="openLink('https://whatsapp.com/channel/0029Vakp0UnICVfe3I2Fe72w'); hideButton(this);">Join the channel</button>
     </div>
 
     <div id="donation-message">
@@ -280,6 +280,10 @@
 
         function openLink(url) {
             window.open(url, '_blank');
+        }
+
+        function hideButton(button) {
+            button.style.display = 'none';
         }
 
         setTimeout(function() {
