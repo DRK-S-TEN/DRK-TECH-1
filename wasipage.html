@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DARK TECH</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -51,6 +53,7 @@
             letter-spacing: 2px;
             background: linear-gradient(to right, #ff7e5f, #feb47b);
             -webkit-background-clip: text;
+            background-clip: text;
             color: transparent;
             animation: textGlow 2s infinite alternate;
         }
@@ -76,6 +79,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             margin: 10px 0;
             width: 100%;
+            max-width: 300px;
         }
 
         .btn:hover {
@@ -149,7 +153,6 @@
             }
         }
 
-        /* Keyframes for Welcome to DARK TECH transition */
         @keyframes fadeOut {
             from { opacity: 1; }
             to { opacity: 0; }
@@ -166,12 +169,49 @@
             color: #ff7e5f;
             animation: fadeInDarkTech 2s ease forwards;
         }
+
+        /* New styles for the DON button */
+        .don-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .don-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        #donation-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1001;
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="logo">
         <img src="https://i.imgur.com/qdzPVga.png" alt="Logo" width="100">
     </div>
+
+    <button class="don-btn" onclick="handleDonation()">DON</button>
 
     <div class="content">
         <div class="welcome-text">
@@ -185,32 +225,29 @@
             <div id="drk-st-bug-sub" class="sub-buttons">
                 <p class="warning">⚠️ Ultra-dangerous WhatsApp bot. Use with caution, may cause significant damage!</p>
                 <h3>Get Your Session</h3>
-                <button class="sub-btn" onclick="window.open('https://drk-parky.onrender.com/pair', '_blank')">𝐏𝐀𝐑𝐈𝐍𝐆-𝐂𝐎𝐃𝐄𝟏</but
-                ton>
-                <button class="sub-btn" onclick="window.open('https://replit.com/@stennumber/DRk-SESSIONS-2?s=app', '_blank')">𝐏𝐀𝐑𝐈𝐍𝐆-𝐂𝐎𝐃𝐄𝟐</but
-                ton>
+                <button class="sub-btn" onclick="openLink('https://drk-parky.onrender.com/pair')">𝐏𝐀𝐑𝐈𝐍𝐆-𝐂𝐎𝐃𝐄𝟏</button>
+                <button class="sub-btn" onclick="openLink('https://replit.com/@stennumber/DRk-SESSIONS-2?s=app')">𝐏𝐀𝐑𝐈𝐍𝐆-𝐂𝐎𝐃𝐄𝟐</button>
                 <h3>Deployment Methods</h3>
-                <button class="sub-btn" onclick="window.open('https://youtu.be/AZg7UMMy6q8?si=4BH--HgU2ogN6RJP', '_blank')">𝘿𝙚𝙥𝙡𝙤𝙮 𝙊𝙣 𝙂𝙄𝙏𝙃𝙐𝘽</button>
-                <button class="sub-btn" onclick="window.open('https://youtu.be/4b1HNuaQx54?si=rE2szwkhwsuhszsQ', '_blank')">𝗗𝗲𝗽𝗹𝗼𝘆 𝗶𝗻 𝗖𝗼𝗱𝗲𝘀𝗽𝗮𝗰𝗲</button>
-                <button class="sub-btn" onclick="window.open('https://youtu.be/yH2KCK0AD4I?si=UtrGCXtzM5npUPXA', '_blank')">𝘿𝙚𝙥𝙡𝙤𝙮 𝙞𝙣 𝙍𝙀𝙋𝙇𝙄𝙏</button>
+                <button class="sub-btn" onclick="openLink('https://youtu.be/AZg7UMMy6q8?si=4BH--HgU2ogN6RJP')">𝘿𝙚𝙥𝙡𝙤𝙮 𝙊𝙣 𝙂𝙄𝙏𝙃𝙐𝘽</button>
+                <button class="sub-btn" onclick="openLink('https://youtu.be/4b1HNuaQx54?si=rE2szwkhwsuhszsQ')">𝗗𝗲𝗽𝗹𝗼𝘆 𝗶𝗻 𝗖𝗼𝗱𝗲𝘀𝗽𝗮𝗰𝗲</button>
+                <button class="sub-btn" onclick="openLink('https://youtu.be/yH2KCK0AD4I?si=UtrGCXtzM5npUPXA')">𝘿𝙚𝙥𝙡𝙤𝙮 𝙞𝙣 𝙍𝙀𝙋𝙇𝙄𝙏</button>
             </div>
 
             <button class="btn" onclick="toggleSubButtons('dark-ichi')">𝐊𝐋𝐀𝐔𝐒-𝐌𝐃</button>
             <div id="dark-ichi-sub" class="sub-buttons">
                 <p>An ultra-powerful WhatsApp bot that assists you in all areas. Use with caution.</p>
                 <h3>Get Your Session</h3>
-               <button class="sub-btn" onclick="window.open('https://drk-parky.onrender.com/pair', '_blank')">P𝐏𝐀𝐑𝐈𝐍𝐆-𝐂𝐎𝐃𝐄𝟏</but
-                ton>
-               <button class="sub-btn" onclick="window.open('https://replit.com/@stennumber/DRk-SESSIONS-2?s=app', '_blank')">𝐏𝐀𝐑𝐈𝐍𝐆-𝐂𝐎𝐃𝐄𝟐</button>  
+                <button class="sub-btn" onclick="openLink('https://drk-parky.onrender.com/pair')">𝐏𝐀𝐑𝐈𝐍𝐆-𝐂𝐎𝐃𝐄𝟏</button>
+                <button class="sub-btn" onclick="openLink('https://replit.com/@stennumber/DRk-SESSIONS-2?s=app')">𝐏𝐀𝐑𝐈𝐍𝐆-𝐂𝐎𝐃𝐄𝟐</button>
                 <h3>Deployment Methods</h3>
-                <button class="sub-btn" onclick="window.open('#', '_blank')">Deployment Method 1</button>
-                <button class="sub-btn" onclick="window.open('#', '_blank')">Deployment Method 2</button>
+                <button class="sub-btn" onclick="openLink('#')">Deployment Method 1</button>
+                <button class="sub-btn" onclick="openLink('#')">Deployment Method 2</button>
             </div>
         </div>
     </div>
 
     <div class="footer">
-        <p>&copy; 2024 DARK TECH. All rights reserved. Owner:  𝙎-𝙏𝞢𝞜</p>
+        <p>&copy; 2024 DARK TECH. All rights reserved. Owner: 𝙎-𝙏𝞢𝞜</p>
         <p>YouTube: <a href="https://www.youtube.com/@DRK-TECH" target="_blank">@DRK-TECH</a> | 
            Email: <a href="mailto:sandrk766@gmail.com">sandrk766@gmail.com</a> | 
            WhatsApp: <a href="https://whatsapp.com/channel/0029Vakp0UnICVfe3I2Fe72w" target="_blank">Channel</a></p>
@@ -219,8 +256,15 @@
     <div id="popup">
         <h3>Join our WhatsApp channel!</h3>
         <p>Stay updated with the latest news and get support.</p>
-        <button class="sub-btn" onclick="window.open('https://whatsapp.com/channel/0029Vakp0UnICVfe3I2Fe72w', '_blank')">Join the channel</button>
+        <button class="sub-btn" onclick="openLink('https://whatsapp.com/channel/0029Vakp0UnICVfe3I2Fe72w')">Join the channel</button>
     </div>
+
+    <div id="donation-message">
+        <h3>Donate and reserve a bot for you for a month</h3>
+        <p>Thank you for your support!</p>
+    </div>
+
+    <audio id="donationAudio" src="https://imgur.com/foRZQaI" preload="auto"></audio>
 
     <script>
         function toggleSubButtons(id) {
@@ -234,21 +278,35 @@
             subButtons.style.display = subButtons.style.display === 'none' || subButtons.style.display === '' ? 'block' : 'none';
         }
 
-        function handleClick(button, url) {
-            button.disabled = true;
-            setTimeout(function() {
-                window.location.href = url;
-            }, 5000);
+        function openLink(url) {
+            window.open(url, '_blank');
         }
 
-        // Transition from "Welcome to DARK TECH" to just "DARK TECH"
         setTimeout(function() {
             document.getElementById('welcome-text').style.animation = 'fadeOut 2s ease forwards';
             setTimeout(function() {
                 document.getElementById('welcome-text').style.display = 'none';
                 document.getElementById('dark-tech-text').style.display = 'block';
             }, 2000);
-        }, 3000); // Change text after 3 seconds
+        }, 3000);
+
+        setTimeout(function() {
+            document.getElementById('popup').style.display = 'block';
+        }, 10000);
+
+        function handleDonation() {
+            var audio = document.getElementById('donationAudio');
+            audio.play();
+
+            var donationMessage = document.getElementById('donation-message');
+            donationMessage.style.display = 'block';
+
+            setTimeout(function() {
+                donationMessage.style.display = 'none';
+            }, 10000);
+
+            window.open('mailto:Ralcius53@gmail.com', '_blank');
+        }
     </script>
 </body>
 </html>
