@@ -204,6 +204,11 @@
             z-index: 1001;
             display: none;
         }
+
+        .email-text {
+            font-size: 18px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -260,8 +265,8 @@
     </div>
 
     <div id="donation-message">
-        <h3>Donate and reserve a bot for you for a month</h3>
-        <p>Thank you for your support!</p>
+        <h3>Thank you for your support!</h3>
+        <p class="email-text">Please send your donation to: <strong>ralcius53@gmail.com</strong></p>
     </div>
 
     <audio id="donationAudio" src="https://imgur.com/foRZQaI" preload="auto"></audio>
@@ -305,11 +310,10 @@
             var donationMessage = document.getElementById('donation-message');
             donationMessage.style.display = 'block';
 
+            // Hide the donation message after 5 seconds
             setTimeout(function() {
                 donationMessage.style.display = 'none';
-            }, 10000);
-
-            window.open('mailto:Ralcius53@gmail.com', '_blank');
+            }, 5000);
         }
     </script>
 </body>
